@@ -1,2 +1,2 @@
 # AIA
-Artificial art, used for inspiration 
+Artificial intelligence art (AIA), used for inspiration 
