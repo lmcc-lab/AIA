@@ -7,10 +7,12 @@ from base64 import b64encode
 from subprocess import Popen
 import os
 
-cwd = os.getcwd()
 
-p = Popen("huggingface_login.bat", cwd=cwd.replace('\\, /'))
-stdout, stderr = p.communicate()
+def initialise():
+    cwd = os.getcwd()
+
+    p = Popen("initialise.bat", cwd=cwd)
+    stdout, stderr = p.communicate()
 
 import torch
 from torch import autocast
@@ -22,4 +24,12 @@ from transformers import CLIPTextModel, CLIPTokenizer
 from tqdm.auto import tqdm
 from huggingface_hub import notebook_login
 
-device = 'cuda'
+if torch.cuda.is_available():
+    device = 'cuda'
+
+else:
+    device = 'cpu'
+    torch
+save_path = './results/'
+
+# os.makedirs

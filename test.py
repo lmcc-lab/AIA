@@ -1,5 +1,2 @@
-import os
-
-cwd = os.getcwd()
-
-print(cwd)
+import torch
+print(torch.cuda.is_available())
