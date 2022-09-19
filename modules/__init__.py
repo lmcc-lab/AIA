@@ -25,10 +25,12 @@ from transformers import CLIPTextModel, CLIPTokenizer
 from tqdm.auto import tqdm
 from huggingface_hub import notebook_login
 
-save_path = './results/'
+save_path = 'results'
+cur_dir = os.listdir()
 
-if save_path not in os.listdir('./'):
-    os.makedirs(save_path)
+if save_path not in cur_dir:
+    os.makedirs('./'+save_path+'/')
+
 
 if torch.cuda.is_available():
     device = 'cuda'
