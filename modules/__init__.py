@@ -4,6 +4,13 @@ import cv2
 import numpy as np
 from IPython.display import HTML
 from base64 import b64encode
+from subprocess import Popen
+import os
+
+cwd = os.getcwd()
+
+p = Popen("huggingface_login.bat", cwd=cwd.replace('\\, /'))
+stdout, stderr = p.communicate()
 
 import torch
 from torch import autocast
@@ -16,8 +23,3 @@ from tqdm.auto import tqdm
 from huggingface_hub import notebook_login
 
 device = 'cuda'
-
-pipe = StableDiffusionPipeline.from_pretrained(
-    'CompVis/stable-diffusion-v1-4', revision='fp16',
-    torch_dtype=torch.float16, use_auth_token=True)
-pipe = pipe.to(device)
