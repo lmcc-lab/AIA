@@ -20,8 +20,6 @@ from huggingface_hub import notebook_login
 save_path = 'results'
 cur_dir = os.listdir()
 
-notebook_login()
-
 if save_path not in cur_dir:
     os.makedirs('./'+save_path+'/')
 
