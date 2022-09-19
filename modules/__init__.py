@@ -14,6 +14,7 @@ def initialise():
     p = Popen("initialise.bat", cwd=cwd)
     stdout, stderr = p.communicate()
 
+
 import torch
 from torch import autocast
 from torch.nn import functional as F
@@ -24,12 +25,13 @@ from transformers import CLIPTextModel, CLIPTokenizer
 from tqdm.auto import tqdm
 from huggingface_hub import notebook_login
 
+save_path = './results/'
+
+os.makedirs(save_path)
+
 if torch.cuda.is_available():
     device = 'cuda'
 
 else:
     device = 'cpu'
-    torch
-save_path = './results/'
-
-# os.makedirs
+    raise EnvironmentError("CPU isn't enabled with pytorch")
