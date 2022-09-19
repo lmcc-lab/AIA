@@ -27,7 +27,8 @@ from huggingface_hub import notebook_login
 
 save_path = './results/'
 
-os.makedirs(save_path)
+if save_path not in os.listdir('./'):
+    os.makedirs(save_path)
 
 if torch.cuda.is_available():
     device = 'cuda'
