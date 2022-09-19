@@ -7,14 +7,6 @@ from base64 import b64encode
 from subprocess import Popen
 import os
 
-
-def initialise():
-    cwd = os.getcwd()
-
-    p = Popen("initialise.bat", cwd=cwd)
-    stdout, stderr = p.communicate()
-
-
 import torch
 from torch import autocast
 from torch.nn import functional as F
@@ -34,7 +26,6 @@ if save_path not in cur_dir:
 
 if torch.cuda.is_available():
     device = 'cuda'
-
 else:
     device = 'cpu'
     raise EnvironmentError("CPU isn't enabled with pytorch")

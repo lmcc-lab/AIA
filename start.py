@@ -3,13 +3,11 @@ from modules.functions import gen_image, image_grid
 
 
 if __name__ == '__main__':
-    initialise()
     print("Checking downloads are available")
     pipe = StableDiffusionPipeline.from_pretrained(
         'CompVis/stable-diffusion-v1-4', revision='fp16',
         torch_dtype=torch.float16, use_auth_token=True)
-    if device is not None:
-        pipe = pipe.to(device)
+    pipe = pipe.to(device)
 
     while True:
         prompt = input("What would you like to see?: ")
