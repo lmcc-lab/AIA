@@ -1,7 +1,7 @@
 from modules import *
 
 
-def gen_image(pipe, prompt):
+def gen_image(prompt):
     with autocast(device):
         image = pipe(prompt)['sample'][0]
     return image

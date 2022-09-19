@@ -29,3 +29,9 @@ if torch.cuda.is_available():
 else:
     device = 'cpu'
     raise EnvironmentError("CPU isn't enabled with pytorch")
+
+print("Checking downloads are available")
+pipe = StableDiffusionPipeline.from_pretrained(
+    'CompVis/stable-diffusion-v1-4', revision='fp16',
+    torch_dtype=torch.float16, use_auth_token=True)
+pipe = pipe.to(device)
